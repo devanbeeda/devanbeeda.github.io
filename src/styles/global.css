@@ -1,0 +1,43 @@
+:root {
+  --bg1: #0b1624;
+  --bg2: #142640;
+  --glow1: #2c5a7a;
+  --glow2: #5b4a8a;
+  --text: #e8ecf2;
+  --text-dim: #b6c2d3;
+  --muted: #8fa0b6;
+  --mint: #8fd3c4;
+  --line: rgba(143, 211, 196, .22);
+  --font-sans: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: dark;
+  box-sizing: border-box;
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: 4.5rem; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: var(--bg1);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+#root { position: relative; min-height: 100vh; }
+h1, h2, h3, p { margin: 0; font-weight: inherit; }
+ul { margin: 0; padding: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; border-radius: 4px; }
+
+/* the intro covers the whole screen */
+.stage { position: fixed; inset: 0; z-index: 5; }
+
+/* Lenis smooth scrolling */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }

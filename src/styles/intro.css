@@ -1,0 +1,53 @@
+.intro {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 0 6vw;
+  transition: opacity 1.1s ease, transform 1.2s cubic-bezier(.6, 0, .2, 1), filter 1.1s ease;
+}
+/* soft dark glow behind the text so the 3D lines never fight with it */
+.intro::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse 52% 40% at 50% 50%, rgba(6, 12, 22, .82), rgba(6, 12, 22, .5) 55%, transparent 82%);
+  animation: scrim-in 2s .4s ease forwards;
+}
+@keyframes scrim-in { to { opacity: 1; } }
+.intro.is-leaving { opacity: 0; transform: translateY(-28px) scale(.98); filter: blur(8px); pointer-events: none; }
+
+/* lines appear one by one */
+.intro__a, .intro__b { display: block; opacity: 0; filter: blur(12px); transform: translateY(10px); }
+.intro__a {
+  font-family: var(--font-sans); font-weight: 500;
+  font-size: clamp(1.3rem, 3.6vw, 2.4rem); letter-spacing: .3em; color: #ffffff; white-space: nowrap;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, .7), 0 0 28px rgba(255, 255, 255, .18);
+  animation: intro-in 1.9s .6s cubic-bezier(.2, .7, .2, 1) forwards;
+}
+.intro__b {
+  margin-top: .25em;
+  font-family: var(--font-serif); font-style: italic;
+  font-size: clamp(3rem, 10vw, 7.5rem); line-height: 1.05; letter-spacing: -.01em; color: #a9ecdc;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .65), 0 0 36px rgba(143, 211, 196, .38);
+  animation: intro-in 2.2s 2.4s cubic-bezier(.2, .7, .2, 1) forwards;
+}
+.intro__rule {
+  width: min(220px, 40vw); height: 1px; margin-top: 2.2rem;
+  background: linear-gradient(90deg, transparent, var(--mint), transparent);
+  transform: scaleX(0); opacity: .7;
+  animation: intro-grow 1.4s 4.4s ease-out forwards;
+}
+.intro__hook {
+  margin-top: 1.8rem; max-width: 34ch; min-height: 2em;
+  font-family: var(--font-mono); font-weight: 300;
+  font-size: clamp(.85rem, 1.7vw, 1.1rem); line-height: 1.6; color: #d3dcea; font-weight: 400;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .7);
+  opacity: 0; transition: opacity .8s ease;
+}
+.intro__hook.is-on { opacity: 1; }
+.intro__prompt { color: var(--mint); }
+.intro__cursor {
+  display: inline-block; width: .55em; height: 1.05em; margin-left: 2px; vertical-align: -.15em;
+  background: var(--mint); animation: intro-blink 1s steps(1) infinite;
+}
+@keyframes intro-in { to { opacity: 1; filter: none; transform: none; } }
+@keyframes intro-grow { to { transform: scaleX(1); } }
+@keyframes intro-blink { 50% { opacity: 0; } }
+
+@media (max-width: 420px) { .intro__a { letter-spacing: .2em; } }
