@@ -21,14 +21,16 @@ export const navItems = [
   { id: 'contact', label: 'Contact' },
 ];
 
+
 export const about = {
   text: [
-    "I'm Devan, a Computer Science and Engineering (Artificial Intelligence) graduate from B. Kothakota in Andhra Pradesh.",
-    'I enjoy working with data: cleaning it up, finding patterns in it and training models to predict things. Most of my work is in Python and SQL. I built a system that spots wild animals in live video to protect livestock, and a model that predicts maize yield. I also worked as an AI and ML intern at Edufer Technologies.',
-    "Right now I'm looking for an entry-level role where I can keep learning and work on real problems with data.",
+    "I'm Devan, a Computer Science and Engineering (Artificial Intelligence) graduate from B. Kothakota in Andhra Pradesh. I finished my B.Tech at Madanapalle Institute of Technology & Science in 2026.",
+    'My work is mostly in Python and SQL. I use Pandas and NumPy to clean and explore data, and Scikit-learn to build and test models like regression, classification and Random Forest. I also work on computer vision with OpenCV and YOLOv11, and I make charts and dashboards with Matplotlib, Seaborn, Power BI and Tableau.',
+    'Two of my main projects: a system that watches live video and detects 13 kinds of wild animals to protect livestock, where I checked detections across consecutive frames to cut down false alarms, and a model that predicts maize yield from rainfall, temperature, humidity, soil and fertilizer data, with a small Flask and React page where you can enter values and see the prediction.',
+    'I have done two internships. At Edufer Technologies I was an AI and ML intern from December 2025 to April 2026, cleaning data, building models and sharing what I found with the team. In summer 2024 I did a remote Python internship at Inspire Softech Solutions, writing scripts to process data and automate tasks. I also hold HackerRank certificates in SQL and Python.',
+    "I'm looking for an entry-level role in data and AI, such as data analyst, data scientist, data engineer, AI engineer, business analyst or ML engineer, where I can keep learning and work on real problems.",
   ],
 };
-
 // Skills are shown in fixed groups (same categories as the resume, plus AWS).
 // `logo` is a file name in src/assets/skills (without .svg). `chips` are skills without a logo.
 export const skillGroups = [
