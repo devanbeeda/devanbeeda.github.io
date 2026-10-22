@@ -1,0 +1,42 @@
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: calc(env(safe-area-inset-top, 0px) + .9rem) clamp(1.25rem, 5vw, 3rem) .9rem;
+  opacity: 0; animation: nav-in 1.2s 3.8s ease forwards;
+  transition: background .4s ease, border-color .4s ease;
+  border-bottom: 1px solid transparent;
+}
+.nav.is-scrolled, .nav.is-open {
+  background: rgba(11, 22, 36, .92);
+  border-bottom-color: var(--line);
+}
+@keyframes nav-in { to { opacity: 1; } }
+.nav__brand { font-family: var(--font-serif); font-size: 1.35rem; text-decoration: none; color: var(--text); }
+.nav__links { display: flex; gap: clamp(1rem, 2.6vw, 2.2rem); }
+.nav__links a {
+  font-size: .9rem; letter-spacing: .04em; text-decoration: none; color: var(--muted);
+  padding: .3rem 0; border-bottom: 1px solid transparent; transition: color .25s ease, border-color .25s ease;
+}
+.nav__links a:hover { color: var(--text); }
+.nav__links a.is-active { color: var(--mint); border-bottom-color: var(--mint); }
+
+.nav__toggle { display: none; background: none; border: 0; width: 44px; height: 44px; margin-right: -10px; cursor: pointer; position: relative; }
+.nav__toggle span { position: absolute; left: 11px; right: 11px; height: 1.5px; background: var(--text); transition: transform .3s ease, top .3s ease; }
+.nav__toggle span:first-child { top: 17px; }
+.nav__toggle span:last-child { top: 25px; }
+.nav.is-open .nav__toggle span:first-child { top: 21px; transform: rotate(45deg); }
+.nav.is-open .nav__toggle span:last-child { top: 21px; transform: rotate(-45deg); }
+
+@media (max-width: 760px) {
+  .nav__toggle { display: block; }
+  .nav__links {
+    position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0;
+    background: rgba(11, 22, 36, .98);
+    border-bottom: 1px solid var(--line); padding: .4rem clamp(1.25rem, 5vw, 3rem) 1rem;
+    max-height: 0; overflow: hidden; visibility: hidden; opacity: 0;
+    transition: opacity .3s ease, visibility 0s .3s;
+  }
+  .nav.is-open .nav__links { max-height: 80vh; visibility: visible; opacity: 1; transition: opacity .3s ease; }
+  .nav__links a { font-size: 1.05rem; padding: .85rem 0; border-bottom: 1px solid rgba(143, 211, 196, .1); }
+  .nav__links a.is-active { border-bottom-color: rgba(143, 211, 196, .1); }
+}
