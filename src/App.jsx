@@ -12,24 +12,22 @@ import { timing } from './data/profile.js';
 // stage: 'intro' -> 'exit' (intro fades, home starts) -> 'home'
 export default function App() {
   const [stage, setStage] = useState('intro');
-  const [typed, setTyped] = useState(false);
 
   useEffect(() => initSmoothScroll(), []);
 
   useEffect(() => {
-    if (!typed) return;
-    const t1 = setTimeout(() => setStage('exit'), timing.holdAfterTyping);
-    const t2 = setTimeout(() => setStage('home'), timing.holdAfterTyping + timing.exitDuration);
+    const t1 = setTimeout(() => setStage('exit'), timing.introDuration);
+    const t2 = setTimeout(() => setStage('home'), timing.introDuration + timing.exitDuration);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
     };
-  }, [typed]);
+  }, []);
 
   return (
     <>
       <Background stage={stage} />
-      {stage !== 'home' && <Intro leaving={stage === 'exit'} onTyped={() => setTyped(true)} />}
+      {stage !== 'home' && <Intro leaving={stage === 'exit'} />}
       {stage !== 'intro' && (
         <>
           <Spotlight />
