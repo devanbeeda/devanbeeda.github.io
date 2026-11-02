@@ -138,7 +138,7 @@ export const projectGroups = [
 export const experience = [
   {
     role: 'AI & Machine Learning Intern',
-    company: 'Edufer Technologies',
+    company: 'Edufer Technologies Pvt Ltd.',
     dates: 'Dec 2025 to Apr 2026',
     points: [
       'Used Python, Pandas and NumPy to clean, preprocess and analyze datasets for predictive modeling tasks.',
